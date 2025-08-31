@@ -187,3 +187,38 @@ main{padding:14px;}
   background-color:#f6f6f6;
   transform:scale(1.1);
 }
+
+
+
+
+
+
+
+
+.ayah-options {
+  position: absolute;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 1000;
+}
+
+.ayah-options button {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.ayah-options button:hover {
+  background: var(--accent);
+  color: #000;
+}
