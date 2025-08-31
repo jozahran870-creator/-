@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>السبحة الإلكترونية</title>
+  <style>
+    body {
+      background: #0d1b2a;
+      color: #fff;
+      font-family: Tahoma, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 30px;
+      overflow: hidden;
+    }
+
+    h2 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .zikr-display {
+      font-size: 22px;
+      background: #1b263b; /* اللون الكحلي الغامق */
+      padding: 15px 25px;
+      border-radius: 15px;
+      text-align: center;
+      min-width: 350px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      margin-bottom: 15px;
+      transition: all 0.3s;
+      outline: none;
+      cursor: text;
+    }
+
+    .circle-screen {
+      width: 200px;
+      height: 200px;
+      background: #1b263b;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      font-weight: bold;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      user-select: none;
+    }
+
+    .circle-screen:active {
+      transform: scale(0.95);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 18px;
+      background: #006400;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #fff;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    /* تأثير ظهور الذكر من الخارج */
+    .floating-zikr {
+      position: absolute;
+      font-size: 20px;
+      color: #ffcc00;
+      opacity: 1;
+      animation: riseOutside 1s ease forwards;
+      pointer-events: none;
+      text-align: center;
+      left: 50%;
+    }
+
+    @keyframes riseOutside {
+      0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateX(-50%) translateY(-100px) scale(1.2); opacity: 1; }
+      100% { transform: translateX(-50%) translateY(-150px) scale(1); opacity: 0; }
+    }
+	
+	
+	
+	
+	.back-arrow {
+  position: fixed;
+  top: 60px; /* المسافة من أعلى الصفحة */
+  left: 20px; /* لأنه RTL */
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.back-arrow:hover {
+  background-color: #f6f6f6;
+  transform: scale(1.1);
+}
+
+	
+	
+	
+  </style>
+</head>
+<body>
+
+  <h2>السبحة الإلكترونية</h2>
+
+  <!-- مكان الذكر القابل للتعديل مباشرة -->
+  <div class="zikr-display" id="zikrDisplay" contenteditable="true">
+    سبحان الله وبحمده سبحان الله العظيم
+  </div>
+
+  <div class="circle-screen" id="counterScreen">0</div>
+
+  <div class="buttons">
+    <button id="incrementBtn">زيادة</button>
+    <button id="resetBtn">إعادة العداد</button>
+  </div>
+
+  <script>
+    const counterScreen = document.getElementById('counterScreen');
+    const incrementBtn = document.getElementById('incrementBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const zikrDisplay = document.getElementById('zikrDisplay');
+
+    let count = 0;
+
+    function showFloatingZikr() {
+      const floatZikr = document.createElement('div');
+      floatZikr.classList.add('floating-zikr');
+      floatZikr.textContent = zikrDisplay.textContent.trim() || "سبحان الله وبحمده سبحان الله العظيم";
+
+      // اجعل العنصر يظهر فوق الدائرة
+      document.body.appendChild(floatZikr);
+
+      // احصل على موقع الدائرة
+      const rect = counterScreen.getBoundingClientRect();
+      floatZikr.style.top = rect.top + "px";
+
+      setTimeout(() => {
+        document.body.removeChild(floatZikr);
+      }, 1000);
+    }
+
+    function increaseCounter() {
+      count++;
+      counterScreen.textContent = count;
+      showFloatingZikr();
+    }
+
+    incrementBtn.addEventListener('click', increaseCounter);
+    counterScreen.addEventListener('click', increaseCounter);
+
+    resetBtn.addEventListener('click', () => {
+      count = 0;
+      counterScreen.textContent = count;
+    });
+  </script>
+  
+<a href="more.html" class="back-arrow" title="صفحة المزيد">&#8592;</a>
+
+</body>
+</html>

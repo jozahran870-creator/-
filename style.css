@@ -1,0 +1,239 @@
+:root{
+  --bg:#071226; 
+  --card:#0f1a2a; 
+  --muted:#98acbf; 
+  --accent:#f6c84c; 
+  --text:#e6eef8;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; 
+  font-family: "Noto Naskh Arabic", "Segoe UI", Roboto, sans-serif; 
+  background:var(--bg); 
+  color:var(--text); 
+  direction:rtl;
+}
+
+/* navbar */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 14px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-bottom:1px solid rgba(255,255,255,0.03)
+}
+.brand{font-size:18px;font-weight:700}
+.muted{color:var(--muted);font-size:13px}
+.nav-right{display:flex;gap:8px;align-items:center}
+.btn{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.03);
+  padding:8px 10px;
+  border-radius:8px;
+  color:var(--text);
+  cursor:pointer
+}
+.search{
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.03);
+  background:rgba(255,255,255,0.02);
+  color:var(--text);
+  min-width:180px
+}
+
+/* main page */
+main{padding:12px}
+.info{display:flex;flex-direction:column;gap:8px;margin-bottom:8px}
+.progressbar{height:8px;background:rgba(255,255,255,0.03);border-radius:8px;overflow:hidden}
+#progressFill{height:100%;background:linear-gradient(90deg,var(--accent),#ff8a65);width:0%}
+
+.sura-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:10px
+}
+.sura-item{
+  background:var(--card);
+  padding:12px;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow:0 6px 20px rgba(0,0,0,0.6)
+}
+.sura-item h3{margin:0;font-size:16px}
+.sura-item p{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+.footer{
+  padding:12px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px
+}
+
+/* surah page */
+.subheader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-bottom:1px solid rgba(255,255,255,0.03)
+}
+.back{
+  text-decoration:none;
+  color:var(--text);
+  padding:6px 8px;
+  border-radius:8px
+}
+.suraContainer{
+  padding:16px;
+  line-height:2.4;
+  font-size:20px;
+  text-align:justify; /* يخلي النص متساوي زي الكتب */
+}
+
+/* basmala style */
+.bismillah, .basmala {
+  text-align: center;         
+  font-size: 22px;            
+  margin: 20px 0;             
+  color: var(--accent);       
+  font-weight: bold;
+  line-height: 2.2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ayat style */
+.ayah {
+  display: inline;          
+  padding: 0 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+.ayaNum {
+  display: inline-block;
+  margin-right: 4px;
+  background: rgba(255,255,255,0.05);
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.ayah.selected {
+  background-color: #006400; /* أخضر غامق */
+  color: #fff;               /* يخلي النص أبيض */
+  border-radius: 4px;
+}
+
+
+
+
+
+
+
+
+
+/* highlight when marked */
+.ayah.last-read {
+  background:rgba(246, 200, 76, 0.25);
+  border-radius:6px;
+}
+
+/* bookmark icon */
+.bookmark {
+  position: absolute;
+  top:-10px;
+  left:-10px;
+  font-size:16px;
+  color:var(--accent);
+  display:none;
+}
+.ayah.last-read .bookmark {
+  display:inline;
+}
+
+/* more page */
+.more-main{padding:12px;display:grid;gap:12px}
+.card{background:var(--card);padding:12px;border-radius:10px}
+.tasbihArea input{
+  width:100%;
+  padding:8px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.03);
+  color:var(--text)
+}
+.tasbihRow{display:flex;gap:8px;align-items:center;margin-top:10px}
+.bigCount{
+  font-size:28px;
+  background:rgba(255,255,255,0.03);
+  padding:8px 12px;
+  border-radius:8px;
+  min-width:70px;
+  text-align:center
+}
+.bigBtn{
+  padding:10px 14px;
+  border-radius:10px;
+  background:linear-gradient(180deg,var(--accent),#ff8a65);
+  border:none;
+  cursor:pointer
+}
+
+/* responsive */
+@media(max-width:480px){
+  .sura-list{grid-template-columns:repeat(2,1fr)}
+}  
+
+
+
+
+
+.back-arrow {
+  position: fixed;
+  top: 60px; /* بدل 20px ليكون أسفل قليلاً */
+  left: 20px; /* لأنه RTL */
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.back-arrow:hover {
+  background-color: #f6f6f6;
+  transform: scale(1.1);
+}

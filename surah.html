@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title id="pageTitle">سورة</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- لو عندك خط عثماني: ضع الملف fonts/uthmani.woff2 -->
+  <style>
+    @font-face {
+      font-family: 'UthmaniCustom';
+      src: url('fonts/uthmani.woff2') format('woff2');
+      font-display: swap;
+    }
+    .uthmani { font-family: 'UthmaniCustom', "Noto Naskh Arabic", serif; font-size: 26px; line-height:1.9; text-align:right; }
+  </style>
+</head>
+<body>
+
+<header class="subheader">
+  <a href="index.html" class="back">⬅ العودة</a>
+  <div id="suraTitle">سورة ...</div>
+  <div class="actions">
+    <button id="favBtn" class="btn">☆ مفضلة</button>
+  </div>
+</header>
+
+<main>
+  <article id="suraContainer" class="suraContainer">
+    <div id="loading">جاري تحميل السورة...</div>
+    <div id="ayaList"></div>
+  </article>
+</main>
+
+<footer class="footer">نص الآيات مأخوذ من مصدر موثوق بصيغة Uthmani عند الطلب.</footer>
+
+<script src="surah.js"></script>
+
+
+
+
+<a href="index.html" class="back-arrow" title="الصفحة الرئيسية">&#8592;</a>
+
+
+
+
+
+
+
+</body>
+</html>
